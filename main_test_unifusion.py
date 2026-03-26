@@ -20,14 +20,15 @@ from models.select_model import define_Model
 import warnings
 from tqdm import tqdm
 import hdf5storage as hdf5
+# os.chdir('/mnt/sdb/dusongcheng/data/code/dinov3/UniFusion')
 
 warnings.filterwarnings("ignore")
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '6'
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'    
 GPU_number = os.environ['CUDA_VISIBLE_DEVICES']
 
 
-def main(json_path=r'./options/unifusion/train_unifusion_vif.json'):
+def main(json_path=r'./options/train_unifusion_vif.json'):
     '''
     # ----------------------------------------
     # Step--1 (prepare opt)
@@ -67,15 +68,15 @@ def main(json_path=r'./options/unifusion/train_unifusion_vif.json'):
     # update opt
     # ----------------------------------------
     # -->-->-->-->-->-->-->-->-->-->-->-->-->-
-    init_iter_G, init_path_G = option.find_last_checkpoint('./Model/Infrared_Visible_Fusion/Infrared_Visible_Fusion/models/10-14-20-32', net_type='G')
-    init_iter_E, init_path_E = option.find_last_checkpoint('./Model/Infrared_Visible_Fusion/Infrared_Visible_Fusion/models/10-14-20-32', net_type='E')
-    opt['path']['pretrained_netG'] = init_path_G
-    opt['path']['pretrained_netE'] = init_path_E
-    # init_iter_optimizerG, init_path_optimizerG = option.find_last_checkpoint('/mnt/sdb/dusongcheng/data/code/dinov3/SwinFusion-master_1/Model/Infrared_Visible_Fusion/Infrared_Visible_Fusion/models/10-23-22-00', net_type='optimizerG')
-    # opt['path']['pretrained_optimizerG'] = init_path_optimizerG
-    current_step = max(init_iter_G, init_iter_E)
+    # init_iter_G, init_path_G = option.find_last_checkpoint('./Model/Infrared_Visible_Fusion/Infrared_Visible_Fusion/models/10-14-20-32', net_type='G')
+    # init_iter_E, init_path_E = option.find_last_checkpoint('./Model/Infrared_Visible_Fusion/Infrared_Visible_Fusion/models/10-14-20-32', net_type='E')
 
-    border = opt['scale']
+    # opt['path']['pretrained_netG'] = init_path_G
+    # opt['path']['pretrained_netE'] = init_path_E
+    
+    opt['path']['pretrained_netG'] = './Model/Infrared_Visible_Fusion/G.pth'
+    opt['path']['pretrained_netE'] = './Model/Infrared_Visible_Fusion/E.pth'
+
     # --<--<--<--<--<--<--<--<--<--<--<--<--<-
     # ----------------------------------------
     # save opt to  a '../option.json' file
@@ -119,7 +120,7 @@ def main(json_path=r'./options/unifusion/train_unifusion_vif.json'):
     # ----------------------------------------
     for phase, dataset_opt in opt['datasets'].items():
         if phase == 'test':
-            test_set = define_Dataset(dataset_opt, current_step)
+            test_set = define_Dataset(dataset_opt)
             test_loader = DataLoader(test_set, batch_size=1,
                                      shuffle=False, num_workers=1,
                                      drop_last=False, pin_memory=True)

@@ -20,10 +20,10 @@ from models.select_model import define_Model
 import warnings
 from tqdm import tqdm
 warnings.filterwarnings("ignore")
-os.environ['CUDA_VISIBLE_DEVICES'] = '6'
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 GPU_number = os.environ['CUDA_VISIBLE_DEVICES']
 
-def main(json_path=r'./options/unifusion/train_unifusion_mff.json'):
+def main(json_path=r'./options/train_unifusion_vif.json'):
     '''
     # ----------------------------------------
     # Step--1 (prepare opt)
@@ -247,4 +247,4 @@ def main(json_path=r'./options/unifusion/train_unifusion_mff.json'):
                     logger.info('<epoch:{:3d}, iter:{:8,d}, Average PSNR : {:<.2f}dB\n'.format(epoch, current_step, avg_psnr))
 
 if __name__ == '__main__':
-    main(r'./options/unifusion/train_unifusion_mff.json')
+    main(r'./options/train_unifusion_mff.json')
