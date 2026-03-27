@@ -32,7 +32,7 @@
         ,
         "dataloader_shuffle": true,
         "dataloader_num_workers": 8,
-        "dataloader_batch_size": 16 //
+        "dataloader_batch_size": 16 
       },
       "test": {
         "name": "test_dataset" // just name

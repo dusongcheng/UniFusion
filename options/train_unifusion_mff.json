@@ -32,7 +32,7 @@
         ,
         "dataloader_shuffle": true,
         "dataloader_num_workers": 8,
-        "dataloader_batch_size": 9 // Total batch size =3x3=12 in SwinIR
+        "dataloader_batch_size": 9 
       },
       "test": {
         "name": "test_dataset" // just name

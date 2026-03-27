@@ -20,7 +20,7 @@ from models.select_model import define_Model
 import warnings
 from tqdm import tqdm
 import hdf5storage as hdf5
-# os.chdir('/mnt/sdb/dusongcheng/data/code/dinov3/UniFusion')
+# os.chdir('./UniFusion')
 
 warnings.filterwarnings("ignore")
 
