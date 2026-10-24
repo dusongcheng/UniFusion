@@ -11,7 +11,7 @@ Image fusion aims to integrate complementary information from multiple source im
 The framework of the proposed SwinFusion for multi-modal image fusion and digital photography image fusion.
 
 ## Experiment
-Download the training dataset and the dinov3_vits16 pre-trained model from [**Fusion dataset**](https://pan.baidu.com/s/1N9VWfRL4ysWR6y46zAYESw?pwd=tnf6).
+Download the training dataset and the dinov3_vits16 pre-trained model from [**Here**](https://pan.baidu.com/s/1N9VWfRL4ysWR6y46zAYESw?pwd=tnf6).
 Put the dataset in **./Dataset/trainsets/**. 
 Put the dinov3 model in **./**.
 ### To Train
